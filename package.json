@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon -L ./index.js",
+    "start": "nodemon -L server.js",
     "build": "tsc -w",
-    "up-docker": "docker-compose -f ./docker/docker-compose.yml up -d"
+    "startd": "docker-compose -f ./docker/docker-compose.yml up -d && tsc -w",
+    "stopd": "docker-compose -f ./docker/docker-compose.yml down"
   },
   "keywords": [],
   "author": "",
