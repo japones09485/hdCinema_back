@@ -1,0 +1,36 @@
+services:
+  hdcinema-db:
+    container_name: db-cinema
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: hdcinema
+      MYSQL_USER: hdcinema
+      MYSQL_PASSWORD: hdcinema
+    ports:
+      - 3306:3306
+    networks:
+      - network-cinema
+    volumes:
+      - mysql-data:/var/lib/mysql
+  hdcinema_back:
+    container_name: backcinema
+    image: node:23-alpine3.20
+    working_dir: /app
+    volumes:
+      - ./dist:/app
+      - ./package.json:/app/package.json
+      - ./node_modules:/app/node_modules
+    ports:
+      - 3000:3000
+    command: npm run start
+    networks:
+      - network-cinema
+    depends_on:
+      - hdcinema-db
+networks:
+  network-cinema:
+    driver: bridge
+volumes:
+  mysql-data: 
+    driver: local
