@@ -10,6 +10,10 @@ export class User {
     email: string
     @Column()
     password: string
+    @Column()
+    phone: string
+    @Column()
+    address: string
     @CreateDateColumn()
     createdAt: Date
     @UpdateDateColumn()
