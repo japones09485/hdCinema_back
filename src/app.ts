@@ -5,10 +5,8 @@ import compression from "compression";
 import morgan from "morgan";
 import { homeRouter } from "./routes/home.routes";
 import { errorHandler } from "./middlewares/errorHandler";
-import { config } from "./config/env";
 
 const app = express();
-
 // Middlewares de seguridad
 app.use(helmet());
 app.use(cors());
