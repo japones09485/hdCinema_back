@@ -1,17 +1,17 @@
 import {Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn} from "typeorm";
 
 @Entity()
-export class Ofertas {
+export class Offers {
     @PrimaryGeneratedColumn()
     id: string
     @Column()
     name: string
     @Column()
-    descripcion: string
+    description: string
     @Column()
-    fch_inicio: Date
+    date_start: Date
     @Column()
-    fch_fin: Date
+    date_end: Date
     @CreateDateColumn()
     createdAt: Date
     @UpdateDateColumn()

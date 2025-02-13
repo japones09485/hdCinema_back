@@ -1,8 +1,8 @@
 import { DataSource } from "typeorm";
 import { User } from "../entities/Users";
-import { Categoria } from "../entities/Categorias";
-import { Productos } from "../entities/Productos";
-import { Ofertas } from "../entities/Ofertas";
+import { Categories } from "../entities/Categories";
+import { Products } from "../entities/Products";
+import { Offers } from "../entities/Offers";
 
 export const AppDataSource = new DataSource({
     type: "mysql",
@@ -11,7 +11,7 @@ export const AppDataSource = new DataSource({
     username: "hdcinema",
     password: "hdcinema",
     database: "hdcinema",
-    entities: [User,Categoria,Productos,Ofertas],
+    entities: [User,Categories,Products,Offers],
     synchronize: true,
     logging: true,
 })
