@@ -2,6 +2,7 @@
 
 import { Request, Response } from "express";
 import { getCategories } from "../repositories/categories.respositry";
+import { getServices } from "../repositories/services.repository";
 import { ICategory } from "../entities/Categories";
 
 export const homeController = (req: Request, res: Response) => {
@@ -10,7 +11,7 @@ export const homeController = (req: Request, res: Response) => {
 
 export const servicesController = async (req: Request, res: Response) => {
   try {
-    // const services = await getServices()
+     const services = await getServices()
   } catch (error) {
     console.log(error);
   }

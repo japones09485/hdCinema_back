@@ -17,5 +17,5 @@ const mockupServices = [
     },
 ]
 export const getServices = async () => {
-    // const services = await 
+   return 'qdwqd';
 }
