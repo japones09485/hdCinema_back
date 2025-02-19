@@ -2,20 +2,21 @@ import multer from "multer";
 import path from "path";
 
 const storage = multer.diskStorage({
-    destination: (req,file,cb) =>{
-        cb(null, path.join(__dirname, "../assets/img"));
-    },
-    filename: (req, file, cb) => {
-        cb(null, file.originalname);
-    }
-})
+  destination: (req, file, cb) => {
+    cb(null, path.join(__dirname, "../assets/img"));
+  },
+  filename: (req, file, cb) => {
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+    cb(null, uniqueSuffix + path.extname(file.originalname));
+  },
+});
 
 // Filtro para aceptar solo ciertos tipos de archivos
 const fileFilter = (req: any, file: any, cb: any) => {
-  if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
-    cb(null, true); // Aceptar el archivo
+  if (["image/jpeg", "image/png"].includes(file.mimetype)) {
+    cb(null, true);
   } else {
-    cb(new Error('Tipo de archivo no soportado'), false); // Rechazar el archivo
+    cb(new Error("Tipo de archivo no soportado"), false);
   }
 };
 
